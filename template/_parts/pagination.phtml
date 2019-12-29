@@ -1,0 +1,27 @@
+<?php
+
+/* @var $model TasksModel */
+
+?>
+
+<div id="pagination_wrap">
+
+    <?php
+
+    for ($page_num = 1; $page_num <= $model->tasks_pages_cnt; $page_num++) {
+
+        $link = '/tasks?';
+        $link .= 'tasks_page=' . $page_num;
+        $link .= '&order_field=' . $model->task_list_order_field;
+        $link .= '&order_direct=' . $model->task_list_order_direct;
+        ?>
+
+        <a href="<?php echo $link; ?>"
+           class="button<?php echo (($page_num == $model->tasks_page) ? ' active' : ''); ?>">
+
+            <?php echo $page_num;?>
+        </a>
+
+    <?php } ?>
+
+</div>

@@ -1,0 +1,49 @@
+<section class="footer">
+    <div class="footerWrap">
+
+        <form id="edit_form" action="/tasks/edit">
+
+            <input type="hidden" name="task_id" id="task_id">
+            <input type="hidden" name="tasks_page" value="<?php echo Application::$model->tasks_page; ?>">
+            <input type="hidden" name="order_field" value="<?php echo Application::$model->task_list_order_field; ?>">
+            <input type="hidden" name="order_direct" value="<?php echo Application::$model->task_list_order_direct; ?>">
+
+            <label for="task_description_edit_input">Редактирование описание: </label>
+            <br>
+            <br>
+            <textarea id="task_description_edit_input" name="task_description" cols=20 rows=10></textarea>
+            <br>
+            <br>
+            <a id="submit_edit_form" href="#" class="button">Сохранить</a>
+
+        </form>
+
+        <form id="add_form" action="/tasks/add">
+
+            <label for="task_user_name_add">Пользователь: </label>
+            <input type="text" name="task_user_name" id="task_user_name_add">
+            <br>
+            <br>
+            <label for="task_user_email_add">Email: </label>
+            <input type="text" name="task_user_email" id="task_user_email_add">
+            <br>
+            <br>
+            <label for="task_description_add_input">Описание: </label>
+            <br>
+            <br>
+            <textarea id="task_description_add_input" name="task_description" cols=20 rows=10></textarea>
+            <br>
+            <br>
+            <a id="submit_add_form" href="#" class="button">Сохранить</a>
+
+        </form>
+
+    </div>
+</section>
+
+<section>
+
+    <script src='/public/js/jquery-3.3.1.min.js'></script>
+    <script src='/public/js/common.js'></script>
+
+</section>

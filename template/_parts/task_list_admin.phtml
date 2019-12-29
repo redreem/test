@@ -1,0 +1,62 @@
+<?php
+
+/* @var $model TasksModel */
+/* @var $view TasksView */
+
+?>
+
+<div class="tasks_wrap">
+
+    <div class="admin_task_head">
+        <div class="task_user_name">Пользователь</div>
+        <div class="task_user_email">Почта</div>
+        <div class="task_description">Описание</div>
+        <div class="task_status">Статус</div>
+        <div class="task_admin_buttons">Действие</div>
+        <div class="clear"></div>
+    </div>
+
+    <?php foreach ($model->tasks as $task) { ?>
+
+    <div class="admin_task_row" data-id="<?php echo $task['id']; ?>">
+
+        <div class="task_user_name">
+            <?php echo $task['user_name']; ?>
+        </div>
+
+        <div class="task_user_email">
+            <?php echo $task['user_email']; ?>
+        </div>
+
+        <div class="task_description">
+            <?php echo $task['task_description']; ?>
+        </div>
+
+        <div class="task_status">
+            <?php echo $task['status_description']; ?>
+            <?php if ($task['task_description_edited'] == 1) { ?>
+
+                <span class="admin_edited_note">Отредактировано администратором</span>
+
+            <?php } ?>
+        </div>
+
+        <div class="task_admin_buttons">
+
+            <?php if ($task['task_status'] == 1) { ?>
+                <a href="#" class="button edit_task_button">Редактировать описание</a>
+                <a href="/tasks/setstatus?task_status=2&task_id=<?php echo $task['id']; ?>&<?php echo $model->getFilterParamsURI(); ?>"
+                   class="button edit_task_button">Отметить как выполненную</a>
+            <?php } ?>
+
+        </div>
+
+        <div class="clear"></div>
+
+    </div>
+
+    <?php }?>
+
+    <?php echo $view->pagination;?>
+
+</div>

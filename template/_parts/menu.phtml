@@ -1,0 +1,56 @@
+<?php
+
+/* @var $model CommonModel */
+
+?>
+
+<header id="menu_wrap">
+
+    <a id="add_task_button" href="#" class="button">Добавить задачу</a>
+
+    <?php if (Application::$model->is_admin) { ?>
+
+        <a href="/tasks/logout" class="button">Выход</a>
+        <div style="float:right;">Вы в режиме администратора</div>
+
+    <?php } else { ?>
+
+        <a href="#" id="login_button" class="button">Вход</a>
+        <div style="float:right;">Вы в режиме пользователя</div>
+
+    <?php } ?>
+
+    <form id="login_form" action="/tasks/login">
+
+        <label for="login">Логин: </label>
+        <input type="text" name="login" id="login" value="admin">
+
+        <label for="password">Пароль: </label>
+        <input type="text" name="password" id="password" value="123">
+
+        <a id="submit_login_form" href="#" class="button">Принять</a>
+
+    </form>
+
+</header>
+
+<?php if (!empty(Application::$model->tasks)) { ?>
+
+<div id="filter_wrap">
+
+    Сортировка по:
+
+    <select id="order_field_select" title="Поле сортировки">
+        <option value="user_name"<?php echo (Application::$model->task_list_order_field == 'user_name' ? ' selected' : ''); ?>>имени</option>
+        <option value="user_email"<?php echo (Application::$model->task_list_order_field == 'user_email' ? ' selected' : ''); ?>>e-mail</option>
+        <option value="task_status"<?php echo (Application::$model->task_list_order_field == 'task_status' ? ' selected' : ''); ?>>статусу</option>
+    </select>
+
+    <select id="order_direct_select" title="Направление сортировки">
+        <option value="asc"<?php echo (Application::$model->task_list_order_direct == 'asc' ? ' selected' : ''); ?>>по возрастанию</option>
+        <option value="desc"<?php echo (Application::$model->task_list_order_direct == 'desc' ? ' selected' : ''); ?>>по убыванию</option>
+    </select>
+
+</div>
+
+<?php } ?>
